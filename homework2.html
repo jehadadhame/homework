@@ -1,0 +1,2075 @@
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+    <title>جامعة الخليل - البوابة الأكاديمية</title>
+    <link href="./css/mainStyle.css" rel="stylesheet" />
+    <link href="./css/RegStyle.css" rel="stylesheet" />
+    <link href="./css/dialog.css?v=3" rel="stylesheet" />
+
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <link rel="stylesheet" href="./js/jquery-ui.css" />
+    <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+    <script
+      type="text/javascript"
+      src="./js/jquery.simplemodal.min.js"
+    ></script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("#basic-modal input.basic, #basic-modal a.basic").click(function (e) {
+          e.preventDefault();
+          $("#basic-modal-content").modal();
+        });
+      });
+
+      function ShowMessage(title, msg) {
+        $("document").ready(function () {
+          $("#messageDialog #msgTitle")[0].innerHTML = title;
+          $("#messageDialog #msgBody")[0].innerHTML = msg;
+          $("#messageDialog").modal();
+        });
+      }
+
+      function ShowDialog(pagePath, closable) {
+        $("document").ready(function () {
+          $("#pageDialog #myframe")[0].src = pagePath;
+          $("#pageDialog").modal({ close: closable });
+        });
+      }
+
+      function ShowPage(pagePath, width, height, closable) {
+        if (typeof width === "undefined" || width === null) {
+          width = 0;
+        }
+        if (typeof height === "undefined" || height === null) {
+          height = 0;
+        }
+        if (width == 0 && height == 0) {
+          $("document").ready(function () {
+            $("#pageDialog #myframe")[0].src = pagePath;
+            $("#pageDialog").modal({ close: closable });
+          });
+        } else {
+          $("document").ready(function () {
+            $("#pageDialog #myframe")[0].src = pagePath;
+            $("#pageDialog").modal({
+              minWidth: width,
+              minHeight: height,
+              close: closable,
+            });
+          });
+        }
+      }
+
+      function progressBtn(sender, group) {
+        var btn = $("#" + sender);
+        var check = true;
+        if (typeof Page_ClientValidate == "function")
+          check = Page_ClientValidate(group);
+        if (group == "" || check == true) {
+          //btn.attr('disabled', 'disabled');
+          //btn.position().top
+          $("body").append("<div class='btnProgress'></div>");
+          var div = $(".btnProgress");
+          div.css("position", "absolute");
+          div.css("top", btn.offset().top + 5);
+          div.css("left", btn.offset().left - 20);
+          div.css("width", "16px");
+          div.css("height", "16px");
+          div.css("background-image", "url(/Images/ajax-loader.gif)");
+          div.css("z-index", "100000000");
+          //btn.click();
+          //btn.wrap("<div class='btnProgress'></div>");
+        }
+      }
+
+      function progressBtnEl(btn, group) {
+        //var btn = $("#" + sender);
+        var check = true;
+        if (typeof Page_ClientValidate == "function")
+          check = Page_ClientValidate(group);
+        if (group == "" || check == true) {
+          //btn.attr('disabled', 'disabled');
+          //btn.position().top
+          $("body").append("<div class='btnProgress'></div>");
+          var div = $(".btnProgress");
+          div.css("position", "absolute");
+          div.css("top", btn.offset().top + 5);
+          div.css("left", btn.offset().left - 20);
+          div.css("width", "16px");
+          div.css("height", "16px");
+          div.css("background-image", "url(/Images/ajax-loader.gif)");
+          div.css("z-index", "100000000");
+          //btn.click();
+          //btn.wrap("<div class='btnProgress'></div>");
+        }
+      }
+
+      function refreshForm() {
+        __doPostBack("", "OnClick");
+      }
+    </script>
+
+    <style type="text/css">
+      .auto-style9 {
+        align-items: center;
+        color: #ff0000;
+      }
+
+      .style85 {
+        width: 545px;
+        direction: ltr;
+        font-weight: bold;
+      }
+
+      .style86 {
+        font-weight: bold;
+      }
+
+      .style47 {
+        font-size: 8pt;
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      .style47 {
+        font-size: 8pt;
+        text-align: left;
+      }
+
+      .style60 {
+        width: 6px;
+        direction: ltr;
+      }
+
+      .auto-style11 {
+        text-align: right;
+      }
+
+      .auto-style12 {
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .SpecRuleCrs {
+        color: red;
+      }
+    </style>
+    <link href="./Css/common.css" rel="stylesheet" />
+
+    <style type="text/css">
+      table.hover-row tr:hover {
+        background-color: khaki;
+      }
+
+      .required-field {
+        color: red;
+        font-weight: bold;
+      }
+
+      .btn-with-img {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .btn-with-img img {
+        padding: 5px;
+      }
+
+      .text-green {
+        color: green;
+      }
+
+      .text-red {
+        color: red;
+      }
+
+      .grid-highlight-red {
+        background-color: pink !important;
+      }
+
+      .btn-green {
+        border-color: green !important;
+        font-weight: bold !important;
+        color: green !important;
+        border-width: 1.2px !important;
+      }
+
+      .btn-red {
+        border-color: red !important;
+        font-weight: bold !important;
+        color: red !important;
+        border-width: 1.2px !important;
+      }
+
+      .btn-black {
+        border-color: black !important;
+        font-weight: bold !important;
+        color: black !important;
+        border-width: 1.2px !important;
+      }
+
+      .ui-dialog-buttonset {
+        width: 100%;
+        text-align: right;
+        font-size: 1.4em;
+      }
+
+      div.btnProgress {
+      }
+
+      .auto-style8 {
+        height: 25px;
+      }
+
+      .style89bb {
+        text-align: right;
+        height: 29px;
+      }
+
+      #I1 {
+        height: 208px;
+        width: 128px;
+      }
+
+      .IE8Fix {
+        z-index: 100;
+      }
+
+      .style62 {
+        width: 10px;
+      }
+
+      .style63 {
+        width: 555px;
+      }
+
+      .style_tagween {
+        font-weight: normal;
+        text-align: right;
+        color: #000000;
+        font-family: tahoma;
+      }
+
+      .auto-style11 {
+        font-size: 10pt;
+      }
+
+      .liveIcon {
+        float: right;
+        width: 20px;
+        margin-left: 5px;
+      }
+
+      .tableCrsList {
+        color: Black;
+        background-color: #cccccc;
+        border-color: #999999;
+        border-width: 3px;
+        border-style: Solid;
+        /*font-family: Tahoma;
+                    font-size: 8pt;
+                    font-weight: normal;*/
+        position: static;
+        direction: rtl;
+        text-align: center;
+        /*font-family: Tahoma;
+                    font-size: 8pt;*/
+        font-size: 12pt;
+        font-family: "Arial";
+        font-weight: bold;
+        width: 100%;
+      }
+
+      .tableCrsList tr:first-child {
+        color: White;
+        background-color: Black;
+        font-weight: bold;
+      }
+
+      .tableCrsList tr:not(:first-child) {
+        background-color: White;
+      }
+
+      .tableCrsList td {
+        padding: 4px;
+      }
+
+      .tableCrsList td:last-child {
+        /*width: 100%;*/
+      }
+
+      .tableCrsList input {
+        font-weight: bold;
+        font-family: Arial;
+        padding: 3px;
+      }
+
+      .lang-btns {
+        text-align: left;
+        overflow: hidden;
+        display: block;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 1px;
+        text-decoration: none;
+        direction: ltr;
+      }
+
+      .lang-btns * {
+        text-decoration: none;
+      }
+
+      .lang-btns .selected {
+        border: 1px solid blue;
+      }
+
+      .menuItemStyle {
+        white-space: normal !important;
+      }
+    </style>
+
+    <style type="text/css">
+      /* <![CDATA[ */
+      #Menu1 {
+        width: 111px;
+      }
+      #Menu1 img.icon {
+        border-style: none;
+        vertical-align: middle;
+      }
+      #Menu1 img.separator {
+        border-style: none;
+        display: block;
+      }
+      #Menu1 ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: auto;
+      }
+      #Menu1 ul.dynamic {
+        background-color: #ffffcc;
+        z-index: 1;
+        margin-left: 2px;
+      }
+      #Menu1 a {
+        color: #292727;
+        font-family: Tahoma;
+        font-size: 8pt;
+        font-weight: normal;
+        text-decoration: none;
+        white-space: nowrap;
+        display: block;
+      }
+      #Menu1 a.static {
+        border-style: none;
+        padding: 5px 0px 5px 0px;
+        font-family: Tahoma;
+        font-size: 8pt;
+        text-decoration: none;
+      }
+      #Menu1 a.popout {
+        background-image: url("/Images/marker1.gif");
+        background-repeat: no-repeat;
+        background-position: right center;
+        padding-right: 14px;
+      }
+      #Menu1 a.popout-dynamic {
+        background: url("/WebResource.axd?d=YAYach_zykzn7tRotFpEUgNXz2fxVEVK7BuCHd5t6rBXK23YThWeBg63L8H9K1QpaAazQmTSD04MbtGxH0Sm8WotAInlaJwNxFiXIVv4YSI1&t=637545212773546526")
+          no-repeat right center;
+        padding-right: 14px;
+      }
+      #Menu1 a.dynamic {
+        background-color: #ece9d8;
+        padding: 10px 0px 10px 0px;
+        color: Black;
+        font-family: Tahoma;
+        font-size: 8pt;
+        font-weight: normal;
+        text-decoration: none;
+      }
+      #Menu1 a.static.selected {
+        background-color: #ffcc66;
+        text-decoration: none;
+      }
+      #Menu1 a.dynamic.selected {
+        background-color: #ffcc66;
+        font-family: Tahoma;
+        font-size: 8pt;
+        text-decoration: none;
+      }
+      #Menu1 a.static.highlighted {
+        color: #ffff99;
+        background-color: #990000;
+        font-family: Tahoma;
+        font-size: 8pt;
+        font-weight: bold;
+        font-style: normal;
+      }
+      #Menu1 a.dynamic.highlighted {
+        color: #0000cc;
+        font-family: Tahoma;
+        font-size: 8pt;
+        font-weight: normal;
+        font-style: normal;
+        text-decoration: underline;
+      }
+      /* ]]> */
+    </style>
+  </head>
+  <body>
+    <div>
+      <table>
+        <tr>
+          <th>اسم الطالب :</th>
+          <th>جهاد الأدهمي</th>
+        </tr>
+        <tr>
+            <th>
+                رقم الجامعي
+            </th>
+            <th>
+                22211052
+            </th>
+        </tr>
+        <tr>
+          <th>التخصــــــــص:</th>
+          <th>علم حاسوب</th>
+        </tr>
+        <tr>
+          <th>المرشد :</th>
+          <th>ابراهيم احمرو</th>
+        </tr>
+        <br />
+      </table>
+      <br />
+    </div>
+    <div class="divid">
+      <table
+        align="center"
+        bgcolor="White"
+        border="1"
+        cellpadding="2"
+        cellspacing="0"
+        class="style85"
+        dir="rtl"
+      >
+        <tbody>
+          <tr bgcolor="#F0F0F0">
+            <td class="auto-style12" colspan="2">
+              <span
+                id="ContentPlaceHolder1_std_name"
+                style="text-align: right; color: #003300"
+                >اسم الطالب :جهاد حامد أحمد ادهمي----------------الرقم
+                الجامعي:22211052</span
+              >
+            </td>
+          </tr>
+          <tr bgcolor="#F0F0F0">
+            <td class="auto-style12">
+              <span class="style47"
+                ><span style="font-size: 9pt; font-family: Tahoma"
+                  ><span class="style60">
+                    <span
+                      id="ContentPlaceHolder1_avg_total"
+                      style="
+                        font-family: Tahoma;
+                        font-size: 8pt;
+                        font-weight: 700;
+                        color: #800000;
+                      "
+                      >المعدل التراكمـي :74.7</span
+                    >
+                  </span></span
+                ></span
+              >
+            </td>
+            <td class="auto-style12">
+              <span class="style47">
+                <span
+                  id="ContentPlaceHolder1_Label1522"
+                  style="font-weight: 700; color: #800000"
+                  >اسم الكليــــــــة : كلية تكنولوجيا المعلومات</span
+                >
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td class="auto-style11">
+              <span class="style47">
+                <span
+                  id="ContentPlaceHolder1_Label522"
+                  style="font-weight: 700; color: #800000"
+                  >الخطة الدراســـية :2221</span
+                >
+              </span>
+            </td>
+            <td class="auto-style11">
+              <span class="style47">
+                <span
+                  id="ContentPlaceHolder1_Label222"
+                  style="font-weight: 700; color: #800000"
+                >
+                  اسم التخصــــــــص : علم الحاسوب</span
+                >
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td class="auto-style11">
+              <span class="style47"
+                ><span class="style47" dir="rtl" style="text-align: right">
+                  <span
+                    id="ContentPlaceHolder1_Label1422"
+                    style="color: #ff6600; font-weight: 700"
+                    >تحت الإنــــــذار: لا</span
+                  >
+                </span></span
+              >
+            </td>
+            <td class="auto-style11">
+              <span class="style47"
+                ><span class="style47" dir="rtl" style="text-align: right">
+                  <span
+                    id="ContentPlaceHolder1_Label322"
+                    style="color: #800000; font-weight: 700"
+                  >
+                    مستوى الطالـــــب :2</span
+                  >
+                </span></span
+              >
+            </td>
+          </tr>
+          <tr bgcolor="#F0F0F0">
+            <td class="auto-style11">
+              <span class="style47"
+                ><span style="font-size: 9pt; font-family: Tahoma"
+                  ><span class="style60">
+                    <span
+                      id="ContentPlaceHolder1_last_hou"
+                      style="
+                        font-family: Tahoma;
+                        font-size: 9pt;
+                        font-weight: 700;
+                        color: #800000;
+                      "
+                      >الساعات المتبقية من الخطة:76</span
+                    >
+                  </span></span
+                ></span
+              >
+            </td>
+            <td class="auto-style11">
+              <span class="style47"
+                ><span style="font-size: 9pt; font-family: Tahoma"
+                  ><span class="style60"
+                    ><span style="font-family: Tahoma; font-size: 9pt">
+                      <span
+                        id="ContentPlaceHolder1_hour_all"
+                        style="
+                          font-family: Tahoma;
+                          font-size: 9pt;
+                          font-weight: 700;
+                          color: #800000;
+                        "
+                        >الساعات المقطوعة من الخطة:59</span
+                      >
+                    </span></span
+                  ></span
+                ></span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td class="auto-style12" colspan="2" style="text-align: center">
+              <span id="ContentPlaceHolder1_lblSupervisor"
+                >المرشد: إبراهيم يعقوب يوسف احمرو</span
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br />
+      <br />
+
+      <h1 style="align-items: center">
+        <span class="auto-style9"><strong>الخطة الدراسية</strong></span>
+      </h1>
+      <div class="DetailBlock">
+        <span
+          id="ContentPlaceHolder1_Repeater1_DtlName_3"
+          class="HeaderText1 DetailBlockHeader"
+          >متطلب كلية اجباري</span
+        >
+        <table class="HeaderText2">
+          <tbody>
+            <tr>
+              <td>
+                عدد الساعات
+                <span id="ContentPlaceHolder1_Repeater1_lblHoursTotal_3"
+                  >26</span
+                >
+              </td>
+              <td>
+                الساعات المقطوعة
+                <span id="ContentPlaceHolder1_Repeater1_lblHoursFinished_3"
+                  >16</span
+                >
+              </td>
+              <td>
+                الساعات المتبقية
+                <span id="ContentPlaceHolder1_Repeater1_lblHoursRemaining_3"
+                  >10</span
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <table
+            cellspacing="0"
+            cellpadding="4"
+            align="Right"
+            rules="cols"
+            id="ContentPlaceHolder1_Repeater1_gv_DtlCourses_3"
+            style="
+              color: Black;
+              background-color: White;
+              border-color: Silver;
+              border-width: 3px;
+              border-style: Solid;
+              font-size: 8pt;
+              font-weight: normal;
+              border-collapse: collapse;
+              font-weight: 700;
+              width: 100%;
+            "
+          >
+            <tbody>
+              <tr
+                style="
+                  color: White;
+                  background-color: #6b696b;
+                  font-weight: bold;
+                "
+              >
+                <th scope="col">رقم المساق</th>
+                <th scope="col">اسم المساق</th>
+                <th scope="col">س.معتمدة</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">ملاحظات</th>
+                <th scope="col">المتطلب السابق</th>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">22105/15</td>
+                <td>الانجليزية&nbsp;للعلوم&nbsp;و&nbsp;التكنولوجيا&nbsp;</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">41130/15</td>
+                <td>مبادئ&nbsp;الاحصاء&nbsp;</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">ناجح</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1101/20</td>
+                <td>تفاضل وتكامل لطلبة تكنولوجيا المعلومات</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">ناجح</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1111/20</td>
+                <td>مقدمة في برمجة الحاسوب</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">ناجح</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1112/20</td>
+                <td>برمجة كيانات موجهة</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">ناجح</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1111</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1180/20</td>
+                <td>مقدمة في تكنولوجيا المعلومات</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">ناجح</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1280/20</td>
+                <td>أساليب البحث العلمي</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">41130</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1281/20</td>
+                <td>أخلاقيات نظم المعلومات</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1180</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1120/20</td>
+                <td>مختبر برمجة كيانات موجهة</td>
+                <td align="center" style="width: 40px">1</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1112</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1115/20</td>
+                <td>مختبر مقدمة في برمجة الحاسوب</td>
+                <td align="center" style="width: 40px">1</td>
+                <td align="center" style="width: 130px">ناجح</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1111</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="DetailBlock">
+        <span
+          id="ContentPlaceHolder1_Repeater1_DtlName_4"
+          class="HeaderText1 DetailBlockHeader"
+          >متطلب تخصص اجباري</span
+        >
+        <table class="HeaderText2">
+          <tbody>
+            <tr>
+              <td>
+                عدد الساعات
+                <span id="ContentPlaceHolder1_Repeater1_lblHoursTotal_4"
+                  >72</span
+                >
+              </td>
+              <td>
+                الساعات المقطوعة
+                <span id="ContentPlaceHolder1_Repeater1_lblHoursFinished_4"
+                  >29</span
+                >
+              </td>
+              <td>
+                الساعات المتبقية
+                <span id="ContentPlaceHolder1_Repeater1_lblHoursRemaining_4"
+                  >43</span
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <table
+            cellspacing="0"
+            cellpadding="4"
+            align="Right"
+            rules="cols"
+            id="ContentPlaceHolder1_Repeater1_gv_DtlCourses_4"
+            style="
+              color: Black;
+              background-color: White;
+              border-color: Silver;
+              border-width: 3px;
+              border-style: Solid;
+              font-size: 8pt;
+              font-weight: normal;
+              border-collapse: collapse;
+              font-weight: 700;
+              width: 100%;
+            "
+          >
+            <tbody>
+              <tr
+                style="
+                  color: White;
+                  background-color: #6b696b;
+                  font-weight: bold;
+                "
+              >
+                <th scope="col">رقم المساق</th>
+                <th scope="col">اسم المساق</th>
+                <th scope="col">س.معتمدة</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">ملاحظات</th>
+                <th scope="col">المتطلب السابق</th>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1333/20</td>
+                <td>الرسم الحاسوبي</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1229</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1331/20</td>
+                <td>هندسة البرمجيات (2)</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1330</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T2341/20</td>
+                <td>برمجة الويب (2)</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1214,T2203</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1207/20</td>
+                <td>مواضيع مختارة في الرياضيات</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">ناجح</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1101</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1210/20</td>
+                <td>مقدمة في علم البيانات</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">مسجل</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1180</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1214/20</td>
+                <td>نظم قواعد البيانات (1)</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">مسجل</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1229</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1219/20</td>
+                <td>نظرية الحسابات</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">مسجل</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1207</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1224/20</td>
+                <td>تصميم منطق الحاسوب</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">ناجح</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1152</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1330/20</td>
+                <td>هندسة البرمجيات (1)</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1214</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1339/20</td>
+                <td>تصميم لغات برمجة</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1219</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1323/20</td>
+                <td>نظم التشغيل (1)</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1224</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1315/20</td>
+                <td>نظم قواعد البيانات (2)</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1214</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1229/20</td>
+                <td>تركيب البيانات والخوارزميات</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">ناجح</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1112</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T2203/20</td>
+                <td>برمجة الويب (1)</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">مسجل</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T3280</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T3280/20</td>
+                <td>مقدمة في شبكات الحاسوب</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">ناجح</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1112</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1152/20</td>
+                <td>تراكيب البيانات المتقطعة</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">ناجح</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1101</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1432/20</td>
+                <td>المعالج الميكروي ولغة أسمبلي</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1224</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1344/20</td>
+                <td>الذكاء الاصطناعي</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1229</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1310/20</td>
+                <td>برمجة الأجهزة المحمولة (2)</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1309</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1309/20</td>
+                <td>برمجة الأجهزة المحمولة(1)</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T2203</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1474/20</td>
+                <td>مشروع التخرج</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1470</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1313/20</td>
+                <td>البرمجة المرئية</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1330</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1320/20</td>
+                <td>مختبر البرمجة المرئية</td>
+                <td align="center" style="width: 40px">1</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1313</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1400/20</td>
+                <td>تدريب ميداني</td>
+                <td align="center" style="width: 40px">1</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T3290/20</td>
+                <td>مختبر شبكات الحاسوب</td>
+                <td align="center" style="width: 40px">1</td>
+                <td align="center" style="width: 130px">مسجل</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T3280</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1230/20</td>
+                <td>مختبر تركيب البيانات والخوارزميات</td>
+                <td align="center" style="width: 40px">1</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1229</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1470/20</td>
+                <td>مقدمة مشروع تخرج</td>
+                <td align="center" style="width: 40px">1</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1280</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1225/20</td>
+                <td>مختبر نظم قواعد البيانات</td>
+                <td align="center" style="width: 40px">1</td>
+                <td align="center" style="width: 130px">مسجل</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1214</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="DetailBlock">
+        <span
+          id="ContentPlaceHolder1_Repeater1_DtlName_5"
+          class="HeaderText1 DetailBlockHeader"
+          >متطلب تخصص اختياري</span
+        >
+        <table class="HeaderText2">
+          <tbody>
+            <tr>
+              <td>
+                عدد الساعات
+                <span id="ContentPlaceHolder1_Repeater1_lblHoursTotal_5"
+                  >9</span
+                >
+              </td>
+              <td>
+                الساعات المقطوعة
+                <span id="ContentPlaceHolder1_Repeater1_lblHoursFinished_5"
+                  >3</span
+                >
+              </td>
+              <td>
+                الساعات المتبقية
+                <span id="ContentPlaceHolder1_Repeater1_lblHoursRemaining_5"
+                  >6</span
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <table
+            cellspacing="0"
+            cellpadding="4"
+            align="Right"
+            rules="cols"
+            id="ContentPlaceHolder1_Repeater1_gv_DtlCourses_5"
+            style="
+              color: Black;
+              background-color: White;
+              border-color: Silver;
+              border-width: 3px;
+              border-style: Solid;
+              font-size: 8pt;
+              font-weight: normal;
+              border-collapse: collapse;
+              font-weight: 700;
+              width: 100%;
+            "
+          >
+            <tbody>
+              <tr
+                style="
+                  color: White;
+                  background-color: #6b696b;
+                  font-weight: bold;
+                "
+              >
+                <th scope="col">رقم المساق</th>
+                <th scope="col">اسم المساق</th>
+                <th scope="col">س.معتمدة</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">ملاحظات</th>
+                <th scope="col">المتطلب السابق</th>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T2150/20</td>
+                <td>مبادئ التصميم</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T3395/20</td>
+                <td>أساسيات انترنت الأشياء</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T2203</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T2340/20</td>
+                <td>برمجة الوسائط المتعددة</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1229</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T3386/20</td>
+                <td>أساسيات التشفير</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1207</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T2424/20</td>
+                <td>تصميم وبرمجة الألعاب</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1447/20</td>
+                <td>تمييز ومعالجة الصور الرقمية</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T3320/20</td>
+                <td>إدارة شبكات الحاسوب</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T3281</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1311/20</td>
+                <td>هندسة البيانات</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1211,T1214</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1211/20</td>
+                <td>تحليل البيانات</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">41130,T1229</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1412/20</td>
+                <td>تعلم الآلة</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1344</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1203/20</td>
+                <td>تفاعل الإنسان والحاسوب</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1223/20</td>
+                <td>أساسيات الدوائر الكهربائية</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1224</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1391/20</td>
+                <td>الواقع الافتراضي التفاعلي</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1290</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1423/20</td>
+                <td>نظم التشغيل (2)</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1323</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1290/20</td>
+                <td>مبادئ الواقع الافتراضي</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1316/20</td>
+                <td>المحاكاة والنمذجة</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1330</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1342/20</td>
+                <td>صيانة المحمول (1)</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1223</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T2250/20</td>
+                <td>تصميم ثنائي الأبعاد</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T2150</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T3287/20</td>
+                <td>الأمن السيبراني</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">مسجل</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1283/20</td>
+                <td>إدارة مشاريع تكنولوجيا المعلومات</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1180</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1413/20</td>
+                <td>مواضيع متقدمة في علم البيانات</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1412</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1317/20</td>
+                <td>مواضيع خاصة</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1343/20</td>
+                <td>صيانة المحمول (2)</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1342</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T3281/20</td>
+                <td>بروتوكولات الشبكات</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T3280</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1324/20</td>
+                <td>المعالجة المتوازية</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1224</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T2445/20</td>
+                <td>مقدمة في XML والويب الدلالي</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T2341</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T3483/20</td>
+                <td>الأنظمة الموزعة</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1323</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T3484/20</td>
+                <td>الحوسبة السحابية</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T3483</td>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">T1492/20</td>
+                <td>الواقع المعزز</td>
+                <td align="center" style="width: 40px">3</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">T1391</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="DetailBlock">
+        <span
+          id="ContentPlaceHolder1_Repeater1_DtlName_6"
+          class="HeaderText1 DetailBlockHeader"
+          >مساقات حرة</span
+        >
+        <table class="HeaderText2">
+          <tbody>
+            <tr>
+              <td>
+                عدد الساعات
+                <span id="ContentPlaceHolder1_Repeater1_lblHoursTotal_6"
+                  >3</span
+                >
+              </td>
+              <td>
+                الساعات المقطوعة
+                <span id="ContentPlaceHolder1_Repeater1_lblHoursFinished_6"
+                  >0</span
+                >
+              </td>
+              <td>
+                الساعات المتبقية
+                <span id="ContentPlaceHolder1_Repeater1_lblHoursRemaining_6"
+                  >3</span
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <table
+            cellspacing="0"
+            cellpadding="4"
+            align="Right"
+            rules="cols"
+            id="ContentPlaceHolder1_Repeater1_gv_DtlCourses_6"
+            style="
+              color: Black;
+              background-color: White;
+              border-color: Silver;
+              border-width: 3px;
+              border-style: Solid;
+              font-size: 8pt;
+              font-weight: normal;
+              border-collapse: collapse;
+              font-weight: 700;
+              width: 100%;
+            "
+          >
+            <tbody>
+              <tr
+                style="
+                  color: White;
+                  background-color: #6b696b;
+                  font-weight: bold;
+                "
+              >
+                <th scope="col">رقم المساق</th>
+                <th scope="col">اسم المساق</th>
+                <th scope="col">س.معتمدة</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">ملاحظات</th>
+                <th scope="col">المتطلب السابق</th>
+              </tr>
+              <tr
+                style="
+                  background-color: #f7f7de;
+                  border-color: Black;
+                  border-width: 1px;
+                  border-style: Solid;
+                  height: 25px;
+                "
+              >
+                <td align="center" style="width: 70px">/0</td>
+                <td></td>
+                <td align="center" style="width: 40px">0</td>
+                <td align="center" style="width: 130px">
+                  <br />
+                </td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+                <td align="center" style="width: 70px">&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div></div>
+  </body>
+</html>

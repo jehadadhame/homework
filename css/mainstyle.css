@@ -1,0 +1,128 @@
+html {
+    direction: rtl;
+}
+
+div.divid {
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 4%;
+    background-color: rgb(94, 94, 153);
+}
+
+body {
+    font-family: Tahoma;
+    font-weight: normal;
+    font-size: 8pt;
+    background-image: url(../Images/bg3.jpg);
+    background-attachment: fixed;
+}
+
+.HeaderText1 {
+    font-family: Tahoma;
+    font-weight: bold;
+    font-size: 10pt;
+}
+
+.HeaderText2 {
+    font-family: Tahoma;
+    font-weight: bold;
+    font-size: 8pt;
+}
+
+.main_page {
+    /*padding: auto;*/
+    margin: auto;
+    text-align: center;
+    width: 960px;
+    overflow: auto;
+    display: block;
+    background-color: rgb(240, 240, 240);
+    border: 1px solid black;
+}
+
+.main_header {
+    display: block;
+    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 10px 10px 10px 10px;
+}
+
+.right_col {
+    float: right;
+    width: 150px;
+    padding: 0px 5px 5px 5px;
+}
+
+.main_content {
+    margin: 0px 2px 30px 2px;
+    float: right;
+    width: 760px;
+    min-height: 300px;
+    overflow: auto;
+}
+
+.main_rounded {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .main_rounded .c1 {
+        width: 11px;
+        height: 11px;
+        background-image: url(../Images/TOP_R.png);
+        background-repeat: no-repeat;
+        border-collapse: collapse;
+    }
+
+    .main_rounded .c2 {
+        width: 11px;
+        height: 11px;
+        background-image: url(../Images/TOP_L.png);
+        background-repeat: no-repeat;
+        border-collapse: collapse;
+    }
+
+    .main_rounded .c3 {
+        width: 11px;
+        height: 11px;
+        background-image: url(../Images/down_R.png);
+        background-repeat: no-repeat;
+        border-collapse: collapse;
+    }
+
+    .main_rounded .c4 {
+        width: 11px;
+        height: 11px;
+        background-image: url(../Images/down_L.png);
+        background-repeat: no-repeat;
+        border-collapse: collapse;
+    }
+
+    .main_rounded .c {
+        height: 11px;
+        background-color: #D8E4F8;
+        border-collapse: collapse;
+    }
+
+    .main_rounded .content {
+        background-color: #D8E4F8;
+        
+    }
+
+.main_footer {
+    clear: both;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    display: block;
+    background-color: rgb(62, 128, 176);
+}
+
+.Menu_Item_Custom {
+    background: url(../Images/marker1.gif) no-repeat right center;
+    padding-right: 10px !important;
+}
